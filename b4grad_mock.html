@@ -1,0 +1,186 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head></head>
+<style>
+body{
+      background-image: url("bg_b4g.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+}
+#pulsate {
+    -webkit-animation: pulsate 3s ease-out;
+    -webkit-animation-iteration-count: infinite; 
+    opacity: 0.5;
+    font-size: 20px;
+    text-align:center;
+    background-color: white;
+    height: 60px;
+    width: 280px;
+}
+@-webkit-keyframes pulsate {
+    0% { 
+        opacity: 0.5;
+    }
+    50% { 
+        opacity: 1.0;
+    }
+    100% { 
+        opacity: 0.5;
+    }
+}
+.mascot-dialogue{
+   float:relative;
+}
+.mascot{
+   float:relative;
+}
+#hand{
+      position:relative;
+      cursor: pointer;
+      opacity:0.3;
+}
+.card{
+      margin: auto;
+      height: 90px;
+      width: 120px;
+      background-color: white;
+      border: 1px solid black;
+      box-shadow:0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      padding: 10px 5px 5px 10px;
+      margin-bottom:5px;
+}
+h4{font-family: "Sans-serif";
+   font-size: 10px;
+}
+p{ font-family: "Sans-serif";
+   font-size: 10px;
+}
+.head-incomplete{
+      text-align:center;
+      color:green;
+}
+.head-complete{
+      text-align:center;
+      color:red;
+}
+.card-content{
+      text-align:center;
+      color: blue;
+}
+.popup{
+   position: relative;
+   display: inline-block;
+   cursor: pointer;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   user-select: none;
+}
+.popup .popuptext {
+   visibility: hidden;
+   width: 15em;  
+   padding: 8px 0;
+   position: absolute;
+   z-index:10000;
+   left: 50%;
+}
+.popup .popuptext::after {
+   content: "";
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   z-index:10000;
+}
+
+.popup .show {
+   visibility: visible;
+   -webkit-animation: fadeIn 1s;
+   animation: fadeIn 1s;
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1 ;}
+}
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1 ;}
+}
+</style>
+
+<body>
+<div class = 'card'>
+<h4 class = 'head-incomplete'>Assignment 1</h4>
+<p class = 'card-content'>P1301A</p>
+<p class = 'card-content'>Due in 6 days</p>
+<p class = 'card-content'>April 18,2020</p>
+</div>
+<div>
+<img id = 'hand' src = 'handsign.png'>
+</div>
+
+<div class = 'card'>
+<h4 class = 'head-incomplete'>Final 1</h4>
+<p class = 'card-content'>HIST2041</p>
+<p class = 'card-content'>Occurs in 10 days</p>
+<p class = 'card-content'>April 22,2020</p>
+</div>
+<h3 class ='head-complete'>Completed Today</h3>
+<div class = 'card'>
+<h4 class = 'head-complete'>Quiz 1</h4>
+<p class = 'card-content'>CS4474</p>
+<p class = 'card-content'>Was at 9:00 AM</p>
+<p class = 'card-content'>This morning</p>
+</div>
+<div class = 'mascot-dialogue'>
+<img class = 'mascot' src = 'mascot_b4g.png'>
+<p id="pulsate"></p>
+</div>
+<div class = 'popup'>
+<a class = "popuptext" id = 'myPopup' href="https://itunes.apple.com/ca/app/b4grad-your-student-agenda/id1352751059?mt=8">
+<img class="dl" src="appstore_image.png" alt="Download from the Apple App Store.">
+</a>
+</div>
+</body>
+<script type ='text/javascript'>
+(function myBro() 
+{
+  var co = 0;
+  var id1 = setInterval(myMove(),5);
+  co++;
+  console.log(co);
+  if (co==9000) clearInterval(id1);
+  function myMove() {
+  var elem = document.getElementById("hand");   
+  var pos = 0;
+  console.log(co);
+  var id = setInterval(frame, 5);
+  function frame() {
+    if (pos > 1000) {
+      clearInterval(id);
+      pos = 0;
+      //console.log(pos);
+      elem.style.left ="0px";
+      id = setInterval(frame,5);
+    } else {
+      pos++; 
+      //elem.style.top = pos + "px"; 
+      elem.style.left = pos + "px"; 
+    }
+  }
+}
+})();
+
+(function mygame(){
+  var id = setTimeout(function(){
+   document.getElementById('pulsate').innerHTML = "Don't procastrinate!";
+  },2000);
+})();
+document.body.addEventListener("click",function(evt){
+ var popup = document.getElementById("myPopup");
+ popup.classList.toggle("show");
+})
+ 
+</script>
+</html>
